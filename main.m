@@ -1,47 +1,38 @@
 //
 //  main.m
-//  DateList
+//  TimeAfterTime
 //
-//  Created by brandon kehl on 10/27/15.
-//  Copyright © 2015 brandonkehl. All rights reserved.
+//  Created by brandon kehl on 7/29/15.
+//  Copyright (c) 2015 bignerdranch. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        // insert code here...
+        //First line of objective-c code ever!
         
+        NSDate *now = [[NSDate alloc] init];
+        NSLog(@"This NSDate object lives at %p", now);
+        NSLog(@"The date is %@", now);
         
-        //Three NSDate objects
-        NSDate *now = [NSDate date];
-        NSDate *tomorrow = [now dateByAddingTimeInterval:24.0 * 60.0 * 60.0];
-        NSDate *yesterday = [now dateByAddingTimeInterval:-24.0 * 60.0 * 60.0];
+        double seconds = [now timeIntervalSince1970];
+        NSLog(@"It has been %f seconds since the start of 1970.", seconds);
         
-        //Mutable array
-        NSMutableArray *dateList = [NSMutableArray array];
+        NSDate *later = [now dateByAddingTimeInterval:100000];
+        NSLog(@"In 100,000 seconds it will be %@", later);
         
-        //Two dates in the array
-        [dateList addObject:now];
-        [dateList addObject:tomorrow];
-        
-        //Add yesterday at the beginng of the list
-        [dateList insertObject:yesterday atIndex:0];
-        
-        // Print out array using fast enumeration
-        for (NSDate *d in dateList) {
-            
-            NSLog(@"Here is a date: %@", d);
-        
-        }
-        
-        //Remove yesterday
-        [dateList removeObjectAtIndex:0];
-        NSLog(@"Now the first date is %@", dateList[0]);
-       
+        NSCalendar *cal =[NSCalendar currentCalendar];
+        NSLog(@"My calendar is %@", [cal calendarIdentifier]);
+        unsigned long day = [cal ordinalityOfUnit:NSCalendarUnitDay
+                                           inUnit:NSCalendarUnitMonth
+                                           forDate:now];
+        NSLog(@"This is the day %lu of the month", day);
         
         
         
     }
+    
     return 0;
+    
 }
