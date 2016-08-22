@@ -2,8 +2,8 @@
 //  main.m
 //  TimeAfterTime
 //
-//  Created by brandon kehl on 7/29/15.
-//  Copyright (c) 2015 bignerdranch. All rights reserved.
+//  Created by brandon kehl
+//  Copyright (c) 2016. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
